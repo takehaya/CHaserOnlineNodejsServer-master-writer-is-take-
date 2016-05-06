@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>CHaserOnline Nodejs Server</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/map.css">
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <link rel="stylesheet" href="/components/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/components/fontawesome/css/font-awesome.min.css">
+    <meta name="author" content="Taiki.F.Watanabe">
+    <!-- For more author's information, view on https://github.com/TaikiFnit -->
+</head>
+<body id="body">
+    <header id="header" role="banner">
+    	<nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="row">
+                <div class="col-xs-8">
+                <a href="/CHaserOnline003/">
+					      <h1>CHaserOnline Nodejs Server</h1>
+                </a>
+                </div>
+                </div>
+            </div>
+     	</nav>
+	</header>
+
+  	<main role="main" class="container personal">
+  		<h2>News</h2>
+  		<div class="panel panel-default">
+  			<div class="panel-heading" data-toggle="collapse" href="#collapseUpdateInfo" aria-expanded="false" aria-controls="collapseUpdateInfo"><span><i class="fa fa-rss"></i>&nbsp;&nbsp;更新状況</span><span class="badge">10</span><span class="angle"><i class="fa fa-angle-down"></i></span></div>
+  			<div class="panel-body collapse" id="collapseUpdateInfo">
+  			<ul class="list-group">
+          <li class="list-group-item">8/04 13:23 Map View画面における、マップ縮小機能の動作改善完了。クライアントが行動するとマップのサイズが元に戻ってしまう不具合を修正しました</li>
+          <li class="list-group-item">8/03 16:46 マップのダウンロード機能実装完了。MpaView画面よりサーバーに保存されているマップのダウンロードが可能です。(Downloadボタンを右クリック→名前をつけてリンク先を保存)</li>
+          <li class="list-group-item">8/03 16:27 マップの削除機能実装完了。MapDelete画面より、サーバーに保存されているマップを削除することができます</li>
+          <li class="list-group-item">8/03 16:14 マップのImport機能実装完了。MapCreate画面より、過去に制作したマップの再編集を行うことができます。</li>
+          <li class="list-group-item">8/03 11:01 相手と重なっている状態でアイテムを取ってPUTしたときの処理を搭載。デバックよろしくおねがいします。</li>
+          <li class="list-group-item">7/26 1:50 マップのUpload機能実装完了。MapView画面より使用可能。</li>
+          <li class="list-group-item">Socket.IOによる非同期対戦Viewの実装完了</li>
+  				<li class="list-group-item">7/20 06:28 作成したマップをUploadする機能を実装中...</li>
+  				<li class="list-group-item">7/20 05:44 Map Viewの実装完了。試合参加時のバグ修正</li>
+  				<li class="list-group-item">7/20 02:19 試合画面, マップ作成画面, ルーム作成の実装完了。</li>
+  			</ul>
+  			</div>
+  		</div>
+
+ 		<h2>How to Use</h2>
+  		<div class="panel panel-default">
+  			<div class="panel-heading" data-toggle="collapse" href="#collapseHowToUse" aria-expanded="false" aria-controls="collapseHowToUse"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;試合までの流れ<span class="angle"><i class="fa fa-angle-down"></i></span></div>
+  			<div class="panel-body collapse" id="collapseHowToUse">
+  			<ul class="list-group">
+  				<li class="list-group-item">0. CreateUser画面よりログインに使用するユーザーを作成する</li>
+  				<li class="list-group-item">1. CreateMap画面よりマップを作成する</li>
+  				<li class="list-group-item">2. CreateRoom画面より使用するマップとターン数を選びルーム(試合)を作成する</li>
+  				<li class="list-group-item">3. 各自のクライアントで、作成したユーザー名、パスワードを入力し、CreateRoom時に生成されたRoomNumberを入力し、サーバーに接続する</li>
+  				<li class="list-group-item">4. Server画面より自分が参加しているルームのIDを入力し、非同期で快適なCHaserOnlineを楽しむ。</li>
+
+  			</ul>
+  			</div>
+  		</div>
+
+		<h2>Sakura CHaserOnline</h2>
+		<ul class="list-group">
+			<li class="list-group-item"><a href="/CHaserOnline003/user/">User</a> : 試合を開始します(クライアント接続用)</li>
+		</ul>
+		<h2>Nodejs CHaserOnline</h2>
+		<h3>Match</h3>
+		<ul class="list-group">
+			<li class="list-group-item"><a href="/CHaserOnline003/node/user/">User</a> : 試合を開始します(ブラウザ用)</li>
+      <li class="list-group-item"><a href="/CHaserOnline003/gui/user">GUI Command</a> : GUIでcommandを入力することができます(ブラウザ用)</li>
+			<li class="list-group-item"><a href="/CHaserOnline003/server/">Server</a> : 対戦画面が閲覧できます</li>
+		</ul>
+
+		<h3>Create</h3>
+		<ul>
+			<li class="list-group-item"><a href="/CHaserOnline003/createUser">CreateUser</a> : ユーザーを作成します</li>
+			<li class="list-group-item"><a href="/CHaserOnline003/createMap">CreateMap</a> : マップを作成します</li>
+			<li class="list-group-item"><a href="/CHaserOnline003/createRoom">CreateRoom</a> : ルームを作成します</li>
+			<li class="list-group-item"><a href="/CHaserOnline003/createRule">CreateRule</a> : ルールを作成します</li>
+		</ul>
+
+		<h3>View</h3>
+		<ul>
+			<li class="list-group-item"><a href="/CHaserOnline003/viewUser">ViewUser</a> : ユーザー一覧が閲覧できます</li>
+			<li class="list-group-item"><a href="/CHaserOnline003/viewMap">ViewMap</a> : マップ一覧が閲覧できます</li>
+			<li class="list-group-item"><a href="/CHaserOnline003/viewRoom">ViewRoom</a> : ルーム一覧が閲覧できます</li>
+			<li class="list-group-item"><a href="/CHaserOnline003/viewRule">ViewRule</a> : ルール一覧が閲覧できます</li>
+		</ul>
+
+		<h3>Delete</h3>
+		<ul>
+			<li class="list-group-item"><a href="/CHaserOnline003/deleteUser">DeleteUser</a> : ユーザーを削除します</li>
+			<li class="list-group-item"><a href="/CHaserOnline003/deleteMap">DeleteMap</a> : マップを削除します</li>
+			<li class="list-group-item"><a href="/CHaserOnline003/deleteRoom">DeleteRoom</a> : ルームを閲覧できます</li>
+			<li class="list-group-item"><a href="/CHaserOnline003/deleteRule">DeleteRule</a> : ルールを閲覧できます</li>
+		</ul>
+	</main>
+
+    <footer role="contentinfo">
+		<p><small> (C)2015 Miyagi Technical High School IRC </small></p>
+	</footer>
+
+    <script src="/components/jquery.js"></script>
+    <script src="/components/bootstrap/js/bootstrap.js"></script>
+</body>
+</html>

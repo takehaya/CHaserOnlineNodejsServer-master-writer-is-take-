@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>CHaserOnline Nodejs Server</title>        
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/map.css">
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <link rel="stylesheet" href="/components/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/components/fontawesome/css/font-awesome.min.css">
+    <meta name="author" content="Taiki.F.Watanabe">
+    <!-- For more author's information, view on https://github.com/TaikiFnit -->
+</head>
+<body id="body">
+    <header id="header" role="banner">
+    	<nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">  
+                <div class="row">
+                <div class="col-xs-8">
+                <a href="/CHaserOnline003/">
+					<h1>CHaserOnline Nodejs Server</h1>	
+                </a>
+                </div>
+                <div class="col-xs-4">
+                    <div class="changeCelSize">
+                        <span class="mapSizeChangeArea" data-size="smaller"><i class="fa fa-compress"></i></span>
+                        <span class="mapSizeChangeArea" data-size="larger"><i class="fa fa-expand"></i></span>
+                    </div>
+                </div>
+            </div>        
+     	</nav>
+	</header>
+  
+    <main role="main" class="container-fluid">  
+        
+        <div class="row">
+			<div class="side col-xs-2">
+		      	<h2>Map View</h2>
+        		
+                <h3>RoomInfo</h3>
+                <ul>
+                    <li>turn: <span class="turnArea">fa</span></li>
+                    <li>playerPoint: <span class="playerPointArea"></span></li>
+                    <li>playerInfo: <span class="playerInfoArea"></span></li></li>
+                    <li>playerStatus: <span class="playerStatusArea"></span></li>
+                    <li>playerPosition: <span class="playerPositionArea"></span></li>
+                </ul>
+
+                <h3>MapInfo</h3>
+                <ul>
+                    <li>Name: <span class="mapNameArea"></span></li>
+                    <li>Author: <span class="mapAuthorArea"></span></li></li>
+                    <li>MapDescription: <span class="mapDescriptionArea"></span></li>
+                    <li>mapSize x: <span class="mapSizeXArea"></span> y: <span class="mapSizeYArea"></span></li>
+                    <li>mapInfo: <span class="mapInfoArea"></span></li>
+                </ul>
+            </div>
+
+            <div class="col-xs-7">
+
+            	<h3>Map</h3>
+
+               <div class="mapArea"> 
+               </div>
+            </div>
+
+            <div class="col-xs-3">
+                <div class="logArea">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-link" data-loading-text="Exporting..." id="export">Export</button>
+                    <a class="btn btn-primary" id="download" style="display: none;">Download</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+		<p><small> (C)2015 Miyagi Technical High School IRC </small></p>
+	</footer>
+    
+    <script src="/components/jquery.js"></script>
+    <script src="/components/bootstrap/js/bootstrap.js"></script>
+    <script src="http://<%= ip %>:3000/socket.io/socket.io.js"></script> 
+    <script src="/javascripts/mapSizeChange.js"></script>
+    <script src="/javascripts/serverSocket.js"></script>
+    <script>
+    	main('<%= ip %>');
+    </script>
+</body>
+</html>

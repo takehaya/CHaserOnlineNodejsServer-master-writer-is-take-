@@ -1,0 +1,1 @@
+{"mapName":"zenjoken・165 2Play","mapAuthor":"","mapDescription":"","mapSize":{"y":"7","x":"7"},"mapInfo":{"nothing":16,"target":16,"block":6,"client1000":1,"item":9,"client2000":1},"map":[[0,1,1,1,2,0,0],[0,1,1000,1,3,0,0],[0,1,1,1,3,2,0],[2,3,3,3,3,3,2],[0,2,3,1,1,1,0],[0,0,3,1,2000,1,0],[0,0,2,1,1,1,0]],"players":"2","startPosition":{"C":{"y":1,"x":2},"H":{"y":5,"x":4}}}

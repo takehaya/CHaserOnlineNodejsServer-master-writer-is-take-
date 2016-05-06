@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>CHaserOnline Nodejs Server</title>        
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/map.css">
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <link rel="stylesheet" href="/components/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/components/fontawesome/css/font-awesome.min.css">
+    <meta name="author" content="Taiki.F.Watanabe">
+    <!-- For more author's information, view on https://github.com/TaikiFnit -->
+</head>
+<body id="body">
+    <header id="header" role="banner">
+    	<nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">  
+                <div class="row">
+                <div class="col-xs-8">
+                <a href="/CHaserOnline003/">
+					<h1>CHaserOnline Nodejs Server</h1>	
+                </a>
+                </div>
+                </div>
+            </div>        
+     	</nav>
+	</header>
+  
+  	<main role="main" class="container">
+  		<h2>CreateRoom</h2>
+
+		<div class="form-group">
+
+			<label for="map">使用するマップを選択 : </label>
+
+			<select name="map" id="map" class="form-control">
+			<% 
+				for(var i = 0; i < maps.length; i++) {
+			%>
+				<option value="<%= maps[i] %>"><%= maps[i] %></option>
+			<%
+				}
+			%>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label for="turn">ターン : </label>
+			<input type="number" name="turn" class="form-control" id="turn" value="200">
+		</div>
+
+		<button class="btn btn-primary" id="createRoom">ルーム作成</button>
+
+		<div class="resultsArea">
+
+		</div>
+
+	</main>
+
+    <footer role="contentinfo">
+		<p><small> (C)2015 Miyagi Technical High School IRC </small></p>
+	</footer>
+    
+    <script src="/components/jquery.js"></script>
+    <script src="/components/bootstrap/js/bootstrap.js"></script>
+    <script>
+
+    $('#createRoom').on('click', function() {
+
+    	$.ajax({
+    		url: '/CHaserOnline003/createRoom',
+    		type: 'POST',
+    		data: {
+    			'map': $('#map').val(),
+    			'turn':  $('#turn').val()
+    		},
+    		success: function(data, textStatus) {
+
+    			var code = '';
+
+    			if(data.results == true) {
+
+					code += '<div class="panel panel-info" style="margin-top: 30px;">';
+					code += '<div class="panel-heading"><p>新規ルーム作成完了</p></div>';
+					code += '<div class="panel-body">';
+					code += '<p>あなたが作成したルームのIDは <strong>' + data.id + '</strong> です</p>';
+					code += '</div>';
+					code += '</div>';
+				}
+
+				$('.resultsArea').empty();
+				$('.resultsArea').append(code);
+    		},
+    		error: function(err) {
+    			console.log(err);
+
+    			var code = '';
+
+				code += '<div class="panel panel-danger">'
+				code += '<div class="panel-heading"><p>新規ルーム作成失敗</p></div>';
+				code += '<div class="panel-body">';
+				code += '<p>CouchDBの設定をご確認ください</p>';
+				code += '</div>';
+				code += '</div>';
+				
+				$('.resultsArea').empty();
+				$('.resultsArea').append(code);
+    		}
+    	});
+    });
+
+    </script>
+</body>
+</html>
+

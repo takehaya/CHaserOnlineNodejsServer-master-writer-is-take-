@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>CHaserOnline Nodejs Server</title>        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/map.css">
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <link rel="stylesheet" href="/components/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/components/fontawesome/css/font-awesome.min.css">
+    <meta name="author" content="Taiki.F.Watanabe">
+    <!-- For more author's information, view on https://github.com/TaikiFnit -->
+</head>
+<body id="body">
+    <header id="header" role="banner">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">  
+                <div class="row">
+                <div class="col-xs-8">
+                <a href="/CHaserOnline003/">
+                    <h1>CHaserOnline Nodejs Server</h1> 
+                </a>
+                </div>
+                </div>
+            </div>        
+        </nav>
+    </header>
+  
+    <main role="main" class="container">  
+        <div class="row">
+            <div class="side col-xs-3">
+                <h2>Map View</h2>
+                <select id="mapList" class="form-control">
+                <%
+                    for(var i = 0; i < files.length; i++) {
+                %>
+                    <option value="<%= files[i] %>"><%= files[i] %></option>
+                <%
+                    }        
+                %>
+                </select>
+
+                <h3>MapInfo</h3>
+                <ul>
+                    <li>Name: <span class="mapNameArea"></span></li>
+                    <li>Author: <span class="mapAuthorArea"></span></li></li>
+                    <li>MapDescription: <span class="mapDescriptionArea"></span></li>
+                    <li>mapSize x: <span class="mapSizeXArea"></span> y: <span class="mapSizeYArea"></span></li>
+                    <li>mapInfo: <span class="mapInfoArea"></span></li>
+                    <li>startPosition: <span class="startPositionArea"></span></li>
+                </ul>
+
+                <h3>Download</h3>
+                <div>
+                   <p>Download this map.</p> 
+                   <a href="#" id="mapDownload" class="btn btn-primary">Download</a>
+
+                </div>
+                
+               <h3>Upload</h3>
+                <div>
+                    <form method="post" enctype="multipart/form-data" action="uploadMap" class="from-group">
+                        <div class="form-group">
+                        <input type="file" name="map" class="form-group">
+                        <input type="submit" class="btn btn-info" id="upload" value="Upload">
+                        </div>
+                    </form>
+                </div> 
+            </div>
+
+            <div class="col-xs-9">
+
+                <h3>Map</h3>
+
+               <div class="mapArea"> 
+
+               </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+        <p><small> (C)2015 Miyagi Technical High School IRC </small></p>
+    </footer>
+    
+    <script src="/components/jquery.js"></script>
+    <script src="/components/bootstrap/js/bootstrap.js"></script>
+    <script src="/javascripts/viewMap.js"></script>
+</body>
+</html>

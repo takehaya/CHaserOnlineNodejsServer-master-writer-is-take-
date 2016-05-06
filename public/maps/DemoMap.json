@@ -1,0 +1,1 @@
+{"mapName":"DemoMap","mapAuthor":"Taiki","mapDescription":"This is demo.","mapSize":{"y":"4","x":"4"},"mapInfo":{"client1000":1,"nothing":6,"item":6,"target":2,"client2000":1},"map":[[1000,0,3,3],[0,0,1,3],[3,1,0,0],[3,3,0,2000]],"players":"2","startPosition":{"C":{"y":0,"x":0},"H":{"y":3,"x":3}}}

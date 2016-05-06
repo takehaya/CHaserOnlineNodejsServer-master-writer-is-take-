@@ -1,0 +1,1 @@
+{"mapName":"ztest","mapAuthor":"","mapDescription":"","mapSize":{"y":"5","x":"5"},"mapInfo":{"target":16,"nothing":4,"block":4,"client1000":1},"map":[[1,1,1,1,1],[1,0,2,0,1],[1,2,1000,2,1],[1,0,2,0,1],[1,1,1,1,1]],"players":"1","startPosition":{"C":{"y":2,"x":2}}}

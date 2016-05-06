@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>CHaserOnline Nodejs Server</title>        
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/map.css">
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <link rel="stylesheet" href="/components/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/components/fontawesome/css/font-awesome.min.css">
+    <meta name="author" content="Taiki.F.Watanabe">
+    <!-- For more author's information, view on https://github.com/TaikiFnit -->
+</head>
+<body id="body">
+    <header id="header" role="banner">
+    	<nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">  
+                <div class="row">
+                <div class="col-xs-8">
+                <a href="/CHaserOnline003/">
+					<h1>CHaserOnline Nodejs Server</h1>	
+                </a>
+                </div>
+                </div>
+            </div>        
+     	</nav>
+	</header>
+  
+  	<main role="main" class="container">
+  		<h2>user Check</h2>
+		<form action="UserCheck" method="get">
+			<label>user=</label><input type="text" name="user" class="form-control">
+			<label>pass=</label><input type="password" name="pass" class="form-control">
+			<input type="submit" value="Go" class="btn btn-primary">
+		</form>
+	</main>
+
+    <footer role="contentinfo">
+		<p><small> (C)2015 Miyagi Technical High School IRC </small></p>
+	</footer>
+    
+    <script src="/components/jquery.js"></script>
+    <script src="/components/bootstrap/js/bootstrap.js"></script>
+</body>
+</html>
+

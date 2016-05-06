@@ -1,0 +1,1 @@
+{"mapName":"MINIMINI","mapAuthor":"","mapDescription":"","mapSize":{"y":"5","x":"5"},"mapInfo":{"target":15,"nothing":4,"item":2,"client1000":1,"block":2,"client2000":1},"map":[[1,1,1,0,3],[1,1000,1,2,0],[1,1,1,1,1],[0,2,1,2000,1],[3,0,1,1,1]],"players":"2","startPosition":{"C":{"y":1,"x":1},"H":{"y":3,"x":3}}}

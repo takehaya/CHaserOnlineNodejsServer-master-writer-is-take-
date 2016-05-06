@@ -1,0 +1,77 @@
+C言語クライアント用の独自Session機能の外部・内部設計書
+
+1. C Client用のroutingを作成
+
+
+/user/へのGETは、client専用にする
+router.get('/user/') の処理はただ、res.render('user')するだけ
+
+/user/UserCheckでは、paramsよりuserとpassを抽出し、login処理を行う
+okであれば、独自のJSESSIONIDをuuidなどで生成し、それをbrowser用のsession storeとは別のsession store (jsessionids)に格納し、
+response header の cookie として上書きする
+
+/user/RoomNumberCheckではすでに;以下にjsessionid=が送付されてくるので、通常のroutingではキャッチすることができないため,
+router.get('/user/:plane')で:plainを参照し、request uri と jsessionid を取り出す
+
+あとはrequest uriに応じた処理を jsessionid で参照できるuserとしておこなうだけ
+
+structure of couchdb jsessionid
+
+db name : jsessionids
+
+{
+	"_id": gen_id,
+	"user": usernName,
+	"joinedRoom": roomId,
+	"clientName": yourClientName eg. C, H, a...
+}
+
+
+
+sakura server /user初回接続時のrespones
+
+Response Header
+HTTP/1.1 200 OK
+Date: Tue, 14 Jul 2015 02:34:45 GMT
+Server: Apache
+Set-Cookie: JSESSIONID=7D30DED257C7CC97D9A8814FA2930E8E; Path=/CHaserOnline003/; HttpOnly
+Content-Length: 801
+Connection: close
+Content-Type: text/html;charset=Windows-31J
+
+Request Header
+GET /CHaserOnline003/user/RoomNumberCheck?roomNumber=1 HTTP/1.1
+Host: www7019ug.sakura.ne.jp
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: ja,en-US;q=0.7,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+
+/UserCheckで認証完了時のheader
+
+Responase Header
+GET /CHaserOnline003/user/UserCheck?user=hot&pass=hot HTTP/1.1
+Host: www7019ug.sakura.ne.jp
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: ja,en-US;q=0.7,en;q=0.3
+Accept-Encoding: gzip, deflate
+Referer: http://www7019ug.sakura.ne.jp/CHaserOnline003/user/RoomNumberCheck?roomNumber=1
+Cookie: JSESSIONID=7D30DED257C7CC97D9A8814FA2930E8E
+Connection: keep-alive
+
+
+Request Header
+
+GET /CHaserOnline003/user/UserCheck?user=hot&pass=hot HTTP/1.1
+Host: www7019ug.sakura.ne.jp
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: ja,en-US;q=0.7,en;q=0.3
+Accept-Encoding: gzip, deflate
+Referer: http://www7019ug.sakura.ne.jp/CHaserOnline003/user/RoomNumberCheck?roomNumber=1
+Cookie: JSESSIONID=7D30DED257C7CC97D9A8814FA2930E8E
+Connection: keep-alive
+
+以上の結果より、ClientからCookieとしてJSESSIONIDが送られてきた場合はServerはSet-Cokieを返さないことが推測できる

@@ -1,0 +1,182 @@
+chaser-server-sessions
+{
+	"userId": int
+}
+
+users
+{
+	"userId": int,
+	"user": string,
+	"password": string,
+}
+
+basedmap
+{
+	"basedMapId": int,
+	"mapSize": {"x": int, "y": int},
+	"turn": int,
+	"mapInfo":
+	{
+		"0": int, // 床の数
+		"1": int, 
+		"2": int,
+	},
+	"startPosition": 
+	{ 
+		"cool": {"x": int, "y": int},
+		"hot": {"x": int, "y": int}
+	},
+	"players": int, // player人数
+	"map": [
+		[1, 0, 1 ,0 ,0], // 0行目
+		[0, 0, 0, 0, 0], // 1行目
+		[1, 2, 0, 0, 0]	 // 2行目
+	],
+}
+
+basedrule
+{
+	"id": int,
+	// 各コマンド実行時の得点の加減についての規定
+	"actionPoint": [
+		{
+			"id": 1
+			"point": 1,
+			"shortName": "wr"
+		},
+		{
+			"id": 2,
+			"point": 1,
+			"shortName": "wl"
+		},
+		{ ... }
+	],
+	// コマンドが表す内容 (wuコマンドはy座標を-1するなどの規定)
+	"commandAction": { // it is alias for afterActionMethod
+		"wu": {
+			"move": {"x": 1, "y": 0}, // コマンドによる移動
+			"returnValue": {"x1"}
+			/*
+
+			*/
+		}
+	},
+	// 動作後の処理の一覧
+	"afterActionMethod": {
+		"id": 1,
+		"name": "walk right",
+		"shortName": "wr",
+		"moveX": 1,
+		"moveY": 0,
+		"returnX1": -1,
+		"returnY1": -1,
+		"returnX2": 1,
+		"returnY2": 1,
+	},
+	// アイテム後の処理(アイテムを取った後の処理、主にワープで移動するなど)
+	"afterItemMethod": {
+		"id": 20,
+		"name": warpr10,
+		"moveX": 10,
+		"moveY": 0,
+		"returnX1": 0,
+		"returnY1": 0,
+		"returnX2": 0,
+		"returnY2": 0
+	},
+	// アイテム得点の一覧(現在いるセルの得点)
+	"itemPoint": {
+		"id": int,
+		"name": string,
+		"point": int
+	}
+}
+
+// 試合
+rooms
+{
+	"roomNumber": int,
+	"basedMapId": string,
+	"mapSize": {"x": int, "y": int},	
+	"mapInfo":
+	{
+		"0": int, // 床の数
+		"1": int, 
+		"2": int,
+	},
+	"playerPosition": {
+		"cool": {"x": int, "y": int},
+		"hot": {"x": int, "y": int}
+	},
+	"players": int,
+	"playerInfo": {
+		"cool": {"userId": int, "userName": int, "JSESSIONID": string},
+		"hot": {"userId": int, "userName": int, "JSESSIONID": string},
+	},
+	// 現在のクライアントのstatus(次のどのcommandを受け付けるか)
+	"playerStatus": {
+		"cool": {"command": "command2"},
+		"hot": {"command": "command1"}
+
+	}
+	"turn": int,
+	"map": [
+		[1, 0, 1 ,0 ,0], // 0行目
+		[0, 0, 0, 0, 0], // 1行目
+		[1, 2, 0, 0, 0]	 // 2行目
+	],
+	"log":[
+		// 0ターン目
+		{
+			"cool": {"command": "wu", position: {"x": int, "y": int}}
+			"hot": {"command": "lu", position: {"x": int, "y": int}} }, // 1ターン目 {"cool": {"command": "wu", position: {"x": int, "y": int}} "hot": {"command": "lu", position: {"x": int, "y": int}} }
+	] 
+}
+
+
+room2
+{
+	"basedMap": 
+	{ 
+		id: 2,
+		mapName: 'testMap2',
+		mapSize: { x: 10, y: 10 },
+		mapInfo: { blank: 0, target: 1, block: 1, item: 1, warp: 1 },
+		startPosition: { cool: { x: 2, y: 2 }, hot: { x: 7, y: 7 } },
+		players: 2,
+		map: 
+		 [ [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+		   [ 0, 2, 2, 2, 2, 2, 2, 2, 2, 0 ],
+		   [ 0, 2, 0, 0, 3, 3, 0, 0, 2, 0 ],
+		   [ 0, 2, 0, 3, 3, 3, 3, 0, 2, 0 ],
+		   [ 0, 2, 3, 3, 3, 3, 3, 3, 2, 0 ],
+		   [ 0, 2, 3, 3, 3, 3, 3, 3, 2, 0 ],
+		   [ 0, 2, 0, 3, 3, 3, 3, 0, 2, 0 ],
+		   [ 0, 2, 0, 0, 3, 3, 0, 0, 2, 0 ],
+		   [ 0, 2, 2, 2, 2, 2, 2, 2, 2, 0 ],
+		   [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] ] 
+	},
+	playerInfo: {
+		"cool": {"userId": int, "userName": int, "JSESSIONID": string},
+		"hot": {"userId": int, "userName": int, "JSESSIONID": string},
+	},
+	players: 0,
+	playerPosition: { cool: { x: 2, y: 2 }, hot: { x: 7, y: 7 } },	
+	turn: int,
+	map: 
+	 [ [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	   [ 0, 2, 2, 2, 2, 2, 2, 2, 2, 0 ],
+	   [ 0, 2, 0, 0, 3, 3, 0, 0, 2, 0 ],
+	   [ 0, 2, 0, 3, 3, 3, 3, 0, 2, 0 ],
+	   [ 0, 2, 3, 3, 3, 3, 3, 3, 2, 0 ],
+	   [ 0, 2, 3, 3, 3, 3, 3, 3, 2, 0 ],
+	   [ 0, 2, 0, 3, 3, 3, 3, 0, 2, 0 ],
+	   [ 0, 2, 0, 0, 3, 3, 0, 0, 2, 0 ],
+	   [ 0, 2, 2, 2, 2, 2, 2, 2, 2, 0 ],
+	   [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] ] 
+	}
+	// logはログファイルに記録
+}
+
+
+

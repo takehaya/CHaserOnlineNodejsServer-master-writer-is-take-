@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>CHaserOnline Nodejs Server</title>        
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/map.css">
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <link rel="stylesheet" href="/components/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/components/fontawesome/css/font-awesome.min.css">
+    <meta name="author" content="Taiki.F.Watanabe">
+    <!-- For more author's information, view on https://github.com/TaikiFnit -->
+</head>
+<body id="body">
+    <header id="header" role="banner">
+    	<nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">  
+                <div class="row">
+                    <div class="col-xs-8">
+                    <a href="/CHaserOnline003/">
+    					<h1>CHaserOnline Nodejs Server</h1>	
+                    </a>
+                    </div>
+                </div>
+            </div>        
+     	</nav>
+	</header>
+  
+    <main role="main" class="container">  
+        
+        <div class="row">
+			<div class="side col-xs-3">
+			<h2>Map Editor</h2>
+        		<h3>MapInfo</h3>
+        		<div class="form-group">
+            			<label for="mapName">Name: </label>
+            			<input id="mapName" class="form-control" type="text" placeholder="Name">
+        		</div>
+        		<div class="form-group">
+            			<label for="mapAuthor">Author: </label>
+            			<input id="mapAuthor" class="form-control" type="text" placeholder="Author">
+        		</div>
+					<div class="form-group">
+            			<label for="mapDescription">Description: </label>
+            			<textarea id="mapDescription" class="form-control" placeholder="This map is created for..."></textarea>
+        		</div>
+        		<h4>MapSize</h4>
+        		<div class="form-group">
+            			<label for="mapSizeX">X: </label>
+            			<input id="mapSizeX" class="form-control mapSizeTextBox" type="number" value="10">
+            	</div>
+        		<div class="form-group">
+            			<label for="mapSizeY">Y: </label>
+            			<input id="mapSizeY" class="form-control mapSizeTextBox" type="number" value="10">
+        		</div>
+
+        		<h4>Players</h4>
+        		<div class="form-group">
+            			<label for="players">Players: </label>
+            			<input id="players" class="form-control" type="number" value="2">
+        		</div>
+
+        		<h4>Save</h4>
+        		<div class="form-group">
+        			<!-- Use the button classes on an <a>, <button>, or <input> element. -->
+                    <button class="btn btn-primary" data-loading-text="Exporting..." id="export">Export</button>
+                    <a class="btn btn-link" id="download" style="display: none;">Download</a>
+        		</div>
+
+                <h4>Import</h4>
+                <div class="form-group">
+                    <!-- Use the button classes on an <a>, <button>, or <input> element. -->
+                    <input type="file" id="files">
+                </div>
+            </div>
+
+            <div class="col-xs-9">
+
+               	<h3>Items</h3>	
+
+               	<div class="itemArea">
+            		<div class="selectedItem">
+	            		<div class="base nothing"><i class="fa fa-square-o" data-num="0"></i></div>
+               		</div>
+               		<div class="mapRow"><div class="base nothing"><i class="fa fa-square-o" data-num="0"></i></div><div class="base target"><i class="fa fa-star" data-num="1"></i></div><div class="base block"><i class="fa fa-square" data-num="2"></i></div><div class="item base"><i class="fa fa-heart" data-num="3"></i></div> <div class="base Fossilr"><i class="fa fa-asterisk" data-num="5"></i></div><div class="base Fossill"><i class="fa fa-asterisk" data-num="6"></i></div><div class="base Fossilu"><i class="fa fa-asterisk" data-num="7"></i></div><div class="base Fossild"><i class="fa fa-asterisk" data-num="8"></i></div>
+                        <div class="base warp20"><i class="fa fa-angle-double-right" data-num="20"></i></div>
+                        <div class="base warp21"><i class="fa fa-angle-double-left" data-num="21"></i></div><div class="base warp22"><i class="fa fa-angle-double-up" data-num="22"></i></div><div class="base warp23"><i class="fa fa-angle-double-down" data-num="23"></i></div><div class="base warp30"><i class="fa fa-angle-right" data-num="30"></i></div><div class="base warp31"><i class="fa fa-angle-left" data-num="31"></i></div><div class="base warp32"><i class="fa fa-angle-up" data-num="32"></i></div><div class="base warp33"><i class="fa fa-angle-down" data-num="33"></i></div>
+                        <div class="clientArea"></div>
+              	 	</div>
+              	 </div>
+
+            	<h3>Map</h3>
+
+               <div class="mapArea"> 
+               </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+		<p><small> (C)2015 Miyagi Technical High School IRC </small></p>
+	</footer>
+    
+    <script src="/components/jquery.js"></script>
+    <script src="/components/bootstrap/js/bootstrap.js"></script>
+    <script src="/javascripts/createMap.js"></script>
+</body>
+</html>
